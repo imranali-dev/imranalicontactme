@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submissions</title>
+</head>
+<body>
+    <h1>Form Submissions</h1>
+
+    <!-- Form for submitting new data -->
+    <form action="/submit" method="POST">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="phoneNumber">Phone Number:</label><br>
+        <input type="text" id="phoneNumber" name="phoneNumber"><br><br>
+
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" required></textarea><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <hr>
+
+    <!-- Display existing submissions -->
+    <h2>Existing Submissions</h2>
+    <ul>
+        <% submissions.forEach(submission => { %>
+            <li>
+                <p><strong>Name:</strong> <%= submission.name %></p>
+                <p><strong>Email:</strong> <%= submission.email %></p>
+                <p><strong>Phone Number:</strong> <%= submission.phoneNumber %></p>
+                <p><strong>Message:</strong> <%= submission.message %></p>
+                <hr>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>
