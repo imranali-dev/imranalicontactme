@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://imranali.vercel.app'],
+  origin: ['http://localhost:3000', 'https://imranali.vercel.app' , 'https://imran-eta-pied.vercel.app/'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 
