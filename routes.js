@@ -3,7 +3,7 @@ const FormSubmission = require('./models/FormSubmission');
 const { connectToMongoDB } = require('./db'); 
 const router = express.Router();
 
-router.post('/me', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   const { name, email, phoneNumber, message } = req.body;
 
   if (!name || !email || !message) {
