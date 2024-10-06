@@ -14,9 +14,14 @@ const logUserVisit = async (req, res, next) => {
   const deviceInfo = deviceDetector.parse(userAgentString);
 
   // Extract relevant information from the parsed device info
-  const browser = `${deviceInfo.client.name || 'Unknown Browser'} ${deviceInfo.client.version || ''}`;
-  const os = `${deviceInfo.os.name || 'Unknown OS'} ${deviceInfo.os.version || ''}`;
-  const deviceName = deviceInfo.device.model || 'Unknown Device';
+  const browser = `${deviceInfo.client.name || 'Unknown Browser'} ${deviceInfo.client.version || ''}`.trim();
+  const os = `${deviceInfo.os.name || 'Unknown OS'} ${deviceInfo.os.version || ''}`.trim();
+  
+  // Use the model and brand name if available, or default to a more descriptive output
+  const deviceName = deviceInfo.device.model 
+    ? `${deviceInfo.device.brand || 'Unknown Brand'} ${deviceInfo.device.model}` 
+    : 'Unknown Device';
+  
   const deviceType = deviceInfo.device.type || 'Unknown Type';  // E.g., 'smartphone', 'tablet', 'desktop', etc.
 
   // Format the important details more clearly
