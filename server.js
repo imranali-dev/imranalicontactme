@@ -28,7 +28,7 @@ connectToMongoDB().catch(err => {
 app.use(logUserVisit); // This now works as expected
 
 app.use('/notes', formRoutes);
-app.use('/me', ContectMe);
+app.use('/', ContectMe);
 
 app.get("/", (req, res) => {
   res.status(200).send('Hello World');
