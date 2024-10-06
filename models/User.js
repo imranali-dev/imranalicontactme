@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 // Define the schema for storing user information
 const userSchema = new mongoose.Schema({
-    
+
   // Store the IP address of the user
   ipAddress: {
     type: String,
@@ -41,10 +41,25 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: 'No important details', // Fallback message
   },
+  visitCount: {
+    type: Number,
+    default: 1, // Start with 1 visit
+  },
+  // Date of the user's first visit
+  firstVisit: {
+    type: Date,
+    default: Date.now, // Automatically set to current date
+  },
+  // Date of the user's most recent visit
+  lastVisit: {
+    type: Date,
+    default: Date.now, // Automatically set to current date
+  },
 }, {
   // Automatically add createdAt and updatedAt timestamps
   timestamps: true,
 });
+userSchema.index({ ipAddress: 1, userAgent: 1 }, { unique: true });
 
 // Create the model from the schema and export it
 const User = mongoose.model('User', userSchema);

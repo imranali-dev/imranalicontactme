@@ -6,7 +6,7 @@ const { connectToMongoDB } = require('./db');
 const formRoutes = require('./routes/userRoutes');
 const errorHandler = require('./errorHandling');
 const logUserVisit = require('./middleware/logUserVisit');
-
+const ContectMe = require("./routes")
 const app = express();
 const port = process.env.PORT || 8088;
 
@@ -27,7 +27,8 @@ connectToMongoDB().catch(err => {
 // Middleware to log user visits
 app.use(logUserVisit); // This now works as expected
 
-app.use('/', formRoutes);
+app.use('/notes', formRoutes);
+app.use('/me', ContectMe);
 
 app.get("/", (req, res) => {
   res.status(200).send('Hello World');
